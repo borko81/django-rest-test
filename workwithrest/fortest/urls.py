@@ -1,6 +1,9 @@
-from django.urls import path
-from . import views
+from . import api_view
 
-urlpatterns = [
-    path('case_one/', views.brutal_funtion, name='brutal_function'),
-]
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'friend', api_view.FriendViewset),
+router.register(r'belonging', api_view.BelongingViewset),
+router.register(r'borrow', api_view.BorrowedViewset),
