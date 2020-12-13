@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from fortest.urls import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include('fortest.urls')),
     path('auth/', include('djoser.urls.authtoken')),
 ]
