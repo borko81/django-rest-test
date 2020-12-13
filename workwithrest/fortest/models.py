@@ -37,3 +37,20 @@ class Borrowed(OwnedModel):
 
     def __str__(self):
         return self.what.name
+
+
+# ------------Test with articles -------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -46,3 +46,5 @@ class WorkWithUrls(View):
             if hasattr(self, name) and getattr(self, name).__name__ == name:
                 methods.append(getattr(self, name))
         return methods
+
+
