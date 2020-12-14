@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'fortest',
     'maintenance',
     'articles',
+    'poll',
     'djoser',
     'rest_framework.authtoken',
     'rest_framework',

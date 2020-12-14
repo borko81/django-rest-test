@@ -7,4 +7,5 @@ urlpatterns = [
     path('fortest/', include('fortest.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('maint/', include('maintenance.urls')),
+    path('article/', include('articles.urls')),
 ]
