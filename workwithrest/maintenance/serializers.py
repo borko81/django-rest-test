@@ -17,3 +17,17 @@ class SerializerType(serializers.ModelSerializer):
     class Meta:
         model = Type
         fields = '__all__'
+
+
+class SerializerEmployee(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+
+class SerializerProblem(serializers.ModelSerializer):
+    problems_type = serializers.RelatedField(many=False, read_only=True)
+
+    class Meta:
+        model = Problem
+        fields = ('description', 'emp', 'type', 'date_add', 'price', 'problems_type')

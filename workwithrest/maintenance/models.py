@@ -18,8 +18,8 @@ class Employee(models.Model):
 
 class Problem(models.Model):
     description = models.TextField()
-    emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    type = models.ForeignKey(Type, on_delete=models.CharField)
+    emp = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='problems_emp')
+    type = models.ForeignKey(Type, on_delete=models.CharField, related_name='problems_type')
     date_add = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
 

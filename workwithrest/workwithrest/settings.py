@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fortest',
     'maintenance',
+    'articles',
     'djoser',
     'rest_framework.authtoken',
     'rest_framework',
