@@ -5,6 +5,7 @@ from .models import *
 from datetime import datetime
 from .serializers import *
 
+# Without use DRF
 
 def poll_list(request):
     MAX_OBJECT = 5
