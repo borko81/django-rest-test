@@ -1,9 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import generics
+
 from .models import *
+from .serializers import *
 
 from datetime import datetime
-from .serializers import *
+
 
 # Without use DRF
 
@@ -26,3 +31,28 @@ def poll_detail(request, pk):
     }}
     return JsonResponse(data, status=200)
 
+
+# With DRF
+
+def convert_date_format(date):
+    return date.strftime("%d.%m.%Y")
+
+
+class PollList(APIView):
+    def get(self, request):
+        poll = Poll.objects.all()
+        data = PollSerializer(poll, many=True).data
+        return Response(data)
+
+
+# class PollDetailView(APIView):
+#     def get(self, request, pk):
+#         poll = get_object_or_404(Poll, pk=pk)
+#         poll.pub_date = convert_date_format(poll.pub_date)
+#         data = PollSerializer(poll).data
+#         return Response(data)
+
+
+class PollDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Poll.objects.all()
+    serializer_class = PollSerializer
