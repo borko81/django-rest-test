@@ -9,4 +9,6 @@ urlpatterns = [
     path('maint/', include('maintenance.urls')),
     path('article/', include('articles.urls')),
     path('poll/', include('poll.urls')),
+
+    path('rest/', include('receipt.urls'))
 ]

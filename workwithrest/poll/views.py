@@ -45,14 +45,16 @@ class PollList(APIView):
         return Response(data)
 
 
-# class PollDetailView(APIView):
-#     def get(self, request, pk):
-#         poll = get_object_or_404(Poll, pk=pk)
-#         poll.pub_date = convert_date_format(poll.pub_date)
-#         data = PollSerializer(poll).data
-#         return Response(data)
+class PollDetailView(APIView):
+    def get(self, request, pk):
+        poll = get_object_or_404(Poll, pk=pk)
+        poll.pub_date = convert_date_format(poll.pub_date)
+        data = PollSerializer(poll).data
+        return Response(data)
 
 
-class PollDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Poll.objects.all()
-    serializer_class = PollSerializer
+class ChoiceList(generics.ListCreateAPIView):
+    def get_queryset(self):
+        queryset = Choices.objects.all()
+        return queryset
+    serializer_class = ChoiceSerializer
