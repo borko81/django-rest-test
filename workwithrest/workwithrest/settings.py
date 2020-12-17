@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'articles',
     'poll',
     'receipt',
+    'company',
     'djoser',
     'rest_framework.authtoken',
     'rest_framework',
