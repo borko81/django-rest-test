@@ -12,4 +12,6 @@ urlpatterns = [
 
     path('rest/', include('receipt.urls')),
     path('company/', include('company.urls')),
+
+    path('myauth/', include('rest_framework.urls')),
 ]

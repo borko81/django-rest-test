@@ -15,3 +15,5 @@ class MyTestClass(TestCase):
         name = Company.objects.get(id=1)
         self.assertEqual(name.name, 'UnrealSoft')
 
+    
+
