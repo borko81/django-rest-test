@@ -1,6 +1,5 @@
-from django.test import TestCase
-
 from company.models import Company
+from django.test import TestCase
 
 
 class MyTestClass(TestCase):
@@ -14,6 +13,3 @@ class MyTestClass(TestCase):
         '''Testing name for first param'''
         name = Company.objects.get(id=1)
         self.assertEqual(name.name, 'UnrealSoft')
-
-    
-

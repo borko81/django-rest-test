@@ -4,9 +4,13 @@ from .models import Company, OwnerCompany
 
 
 class OnwerCompanySerializer(serializers.ModelSerializer):
+    owner_name = serializers.ReadOnlyField(source='owner.username')
+    company_name = serializers.ReadOnlyField(source='company.name')
+
     class Meta:
         model = OwnerCompany
-        fields = '__all__'
+        fields = 'pk company company_name owner owner_name'.split()
+        lookup_field = 'pk'
 
 
 def company_Serializer_factory(type='basic'):
