@@ -21,15 +21,10 @@ class Simples(models.Model):
         ordering = ['pk']
 
 
-class SimpleQuant(models.Model):
-    name = models.ForeignKey(Simples, related_name='simplequant', on_delete=models.CASCADE)
-    amount = models.IntegerField()
-
-
 class Recepies(models.Model):
     name = models.CharField(max_length=255, unique=True)
     group = models.ForeignKey(Grops, on_delete=models.CASCADE, related_name='recepies', limit_choices_to={'razpad': True})
-    simple = models.ManyToManyField(Simples, related_name='recepies', through=SimpleQuant)
+    simple = models.ManyToManyField(Simples, related_name='recepies')
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self) -> str:
