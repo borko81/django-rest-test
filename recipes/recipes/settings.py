@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'accounts',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,4 @@ STATIC_URL = '/static/'
 
 # Add to corect make migrations after change user model with AbstractModel
 AUTH_USER_MODEL = 'accounts.UserProfile'
+LOGIN_REDIRECT_URL = '/api/products/'

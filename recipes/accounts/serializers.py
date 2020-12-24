@@ -20,4 +20,4 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = 'username password email first_name last_name'.split()
+        fields = 'id username password email first_name last_name'.split()
