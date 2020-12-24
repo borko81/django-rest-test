@@ -1,7 +1,13 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from products.views import SimpleListView, GroupListView, RecepiListView, \
-    RecepiDetails
+from products.views import (
+    SimpleListView,
+    GroupListView,
+    RecepiListView,
+    RecepiDetails,
+    RecepiIng,
+    RecepiIngDetail
+)
 
 
 class TestUrls(SimpleTestCase):
@@ -25,3 +31,13 @@ class TestUrls(SimpleTestCase):
         url = reverse('recepi_detail', args=[1])
         print(resolve(url))
         self.assertEqual(resolve(url).func.view_class, RecepiDetails)
+
+    def test_recepiing_url_is_resolve(self):
+        url = reverse('recepiing')
+        print(resolve(url))
+        self.assertEqual(resolve(url).func.view_class, RecepiIng)
+
+    def test_recepiing_retail_is_resolve(self):
+        url = reverse('recepiing_detail', args=[1])
+        print(resolve(url))
+        self.assertEqual(resolve(url).func.view_class, RecepiIngDetail)
