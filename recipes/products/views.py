@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from rest_framework import generics
 
-from .serializers import GroupSerialize, SimpleSerialize, RecepiesSerializer
-from .models import Grops, Simples, Recepies
+from .serializers import GroupSerialize, SimpleSerialize, RecepiesSerializer, RecepiesIngrediencSerializer
+from .models import Grops, Simples, Recepies, RecipeIngredient
 
 
 class GroupListView(generics.ListCreateAPIView):
@@ -18,3 +17,18 @@ class SimpleListView(generics.ListCreateAPIView):
 class RecepiListView(generics.ListCreateAPIView):
     serializer_class = RecepiesSerializer
     queryset = Recepies.objects.all()
+
+
+class RecepiDetails(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RecepiesSerializer
+    queryset = Recepies.objects.all()
+
+
+class RecepiIng(generics.ListCreateAPIView):
+    serializer_class = RecepiesIngrediencSerializer
+    queryset = RecipeIngredient.objects.all()
+
+
+class RecepiIngDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RecepiesIngrediencSerializer
+    queryset = RecipeIngredient.objects.all()
