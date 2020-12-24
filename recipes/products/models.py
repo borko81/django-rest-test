@@ -25,7 +25,7 @@ class RecipeIngredient(models.Model):
     recepies = models.ForeignKey('Recepies', on_delete=models.CASCADE)
     ingredient = models.ForeignKey('Simples', on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=5, decimal_places=2)
-    
+
 
 class Recepies(models.Model):
     name = models.CharField(max_length=250, unique=True)
@@ -35,4 +35,3 @@ class Recepies(models.Model):
 
     def __str__(self):
         return self.name
-
