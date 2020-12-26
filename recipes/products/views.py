@@ -14,6 +14,11 @@ class SimpleListView(generics.ListCreateAPIView):
     queryset = Simples.objects.all()
 
 
+class SimpleDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = SimpleSerialize
+    queryset = Simples.objects.all()
+
+
 class RecepiListView(generics.ListCreateAPIView):
     serializer_class = RecepiesSerializer
     queryset = Recepies.objects.all()
