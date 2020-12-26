@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_swagger',
     'accounts',
     'products',
 ]
@@ -83,6 +84,9 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -124,4 +128,4 @@ STATIC_URL = '/static/'
 
 # Add to corect make migrations after change user model with AbstractModel
 AUTH_USER_MODEL = 'accounts.UserProfile'
-LOGIN_REDIRECT_URL = '/api/products/'
+LOGIN_REDIRECT_URL = 'api/products/'
