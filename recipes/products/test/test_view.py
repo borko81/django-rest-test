@@ -4,8 +4,6 @@ from django.urls import reverse
 from products.models import (
     Grops,
     Simples,
-    RecipeIngredient,
-    Recepies
 )
 
 
