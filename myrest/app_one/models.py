@@ -22,6 +22,9 @@ class City(models.Model):
 
 @receiver(pre_save, sender=Country)
 def country_count_increase(sender, instance, *args, **kwargs):
+    """
+        Pre saved
+    """
     try:
         mycount = CountyCount.objects.get(id=1)
         mycount.count += 1
