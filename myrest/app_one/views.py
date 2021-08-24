@@ -2,7 +2,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests
 import json
-from .models import Country, City
+
+from .filters import FilmFilter
+from .models import Country, City, Film
 from django.db.models import Sum, Count
 
 
@@ -34,3 +36,9 @@ def profile(request):
     }
     print(data)
     return JsonResponse(data, safe=False)
+
+
+def show_films(request):
+    obj = Film.objects.all()
+    filter = FilmFilter(request.GET, queryset=obj)
+    return render(request, 'filters.html', {'filter': filter, 'obj': obj})

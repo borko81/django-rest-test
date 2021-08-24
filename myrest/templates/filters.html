@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .my_form {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>This is a filter</h3>
+<form action="" method="GET">
+    {{ filter.form.as_p }}
+    <button type="submit" class="my_form">Search</button>
+</form>
+<ul>
+{% for f in filter.qs %}
+    <li>{{ f.title }}: {{ f.description }} has price {{ f.price }}</li>
+{% endfor %}
+</ul>
+<script>
+    let title = document.getElementById('id_title__icontains');
+    let price_gt = document.getElementById('id_price__gt');
+    let price_lt = document.getElementById('id_price__lt');
+    title.classList.add('my_form');
+    price_gt.classList.add('my_form');
+    price_lt.classList.add('my_form');
+</script>
+</body>
+</html>
