@@ -3,8 +3,12 @@ from django.shortcuts import render
 import requests
 import json
 
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
 from .filters import FilmFilter
 from .models import Country, City, Film
+from .forms import FilmForm
 from django.db.models import Sum, Count
 
 
@@ -42,3 +46,10 @@ def show_films(request):
     obj = Film.objects.all()
     filter = FilmFilter(request.GET, queryset=obj)
     return render(request, 'filters.html', {'filter': filter, 'obj': obj})
+
+
+class CreateFilm(CreateView):
+    model = Film
+    template_name = 'create_new_film.html'
+    success_url = reverse_lazy('show_films')
+    form_class = FilmForm

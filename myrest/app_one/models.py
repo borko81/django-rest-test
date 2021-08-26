@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.core.exceptions import ValidationError
 
 
 class Country(models.Model):
@@ -60,10 +61,24 @@ def city_count_increase(sender, instance, *args, **kwargs):
         CityCount.objects.create(town=Country.objects.get(name=instance.country.name), count=1)
 
 
+class FilmManager(models.Manager):
+    def get_queryset(self):
+        return super(FilmManager, self).get_queryset().filter(description__startswith='D')
+
+
 class Film(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=255)
     price = models.DecimalField(decimal_places=2, max_digits=5)
+    objects = models.Manager()
+    search_with_filter = FilmManager()
 
     def __str__(self):
+        return self.title
+
+    def clean(self):
+        if not len(self.title) >= 5:
+            raise ValidationError(
+                {'title': 'Title should have least 5 symbol\'s'}
+            )
         return self.title

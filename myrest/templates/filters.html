@@ -25,6 +25,7 @@
     <li>{{ f.title }}: {{ f.description }} has price {{ f.price }}</li>
 {% endfor %}
 </ul>
+<a href="{% url 'create_film' %}">Create New</a>
 <script>
     let title = document.getElementById('id_title__icontains');
     let price_gt = document.getElementById('id_price__gt');
