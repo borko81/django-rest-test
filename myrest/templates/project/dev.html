@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Devepoloers</p>
+The name is: {{ project.title }}
+<hr>
+{% for o in obj %}
+    {{ o.name }} {{ o.email }}: {{ o.specialisation }}
+{% endfor %}
+</body>
+</html>

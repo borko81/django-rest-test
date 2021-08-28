@@ -1,0 +1,21 @@
+{% extends 'web/base.html' %}
+{% block title %}{{ title }}{% endblock title %}
+
+{% block body %}
+    {{ my_variable }}
+    <div>
+    {% if age >= 40 %}
+        <b>Ok is good</b>
+    {% else %}
+        <b>Not looked good</b>
+    {% endif %}
+    </div>
+    <div>
+        <ul>
+        {% for city in attay_cityes %}
+            <li>{{ city|capfirst|truncatechars:5 }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'web:second' age %}">Second page</a>
+{% endblock body %}
