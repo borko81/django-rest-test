@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'rest_framework',
     # My Appp's
     'app_one',
     'web',
-    'projects'
+    'projects',
+    'rest',
+    'talk',
 ]
 
 MIDDLEWARE = [
