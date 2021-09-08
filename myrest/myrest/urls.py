@@ -25,4 +25,8 @@ urlpatterns = [
     path('rest/', include(router.urls)),
 
     path('talk/', include('talk.urls')),
+
+    path('poll/', include('polls.urls')),
+
+    path('app/', include('app_two.urls'))
 ]
