@@ -1,9 +1,12 @@
 import time
 
 from django.http import HttpResponse, request
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+
+from .models import Films
+from .filters import FilmFilter
 
 
 def super_user_only(function):
@@ -46,3 +49,24 @@ def my_view(request):
 @timeit
 def my_view2(request):
     return HttpResponse('Login required')
+
+
+def films(request):
+    obj = Films.objects.all()
+    content = {'films': obj, 'filter': FilmFilter(request.GET, queryset=obj)}
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        content = {
+            'name': name,
+            'price': price
+        }
+        try:
+            Films.objects.create(**content)
+        except Exception as e:
+            print(e)
+        return redirect('films')
+
+    return render(request, 'deco/index.html', content)
+
