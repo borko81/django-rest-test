@@ -28,5 +28,7 @@ urlpatterns = [
 
     path('poll/', include('polls.urls')),
 
-    path('app/', include('app_two.urls'))
+    path('app/', include('app_two.urls')),
+
+    path('deco/', include('usefull_decorators.urls')),
 ]

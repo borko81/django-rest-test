@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'talk',
     'app_two',
     'polls',
+    'usefull_decorators'
 ]
 
 MIDDLEWARE = [
